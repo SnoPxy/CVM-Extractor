@@ -1,58 +1,39 @@
-📊 CVM EXTRATOR
+# 📊 CVM EXTRATOR  
 
-O CVM EXTRATOR é um projeto pessoal desenvolvido com o objetivo de praticar programação, automação de dados e integração com banco de dados.
-O sistema realiza automaticamente a coleta dos extratos de fundos de investimento disponibilizados pela CVM, faz o tratamento necessário e organiza as informações em um banco relacional (MySQL).
+## Descrição do Projeto  
+O **CVM EXTRATOR** é uma aplicação em Python desenvolvida para automatizar a coleta, tratamento e armazenamento dos **extratos de fundos de investimento disponibilizados pela CVM**.  
+O sistema realiza o download dos arquivos CSV diretamente do site da CVM, trata eventuais inconsistências (como ausência da coluna `TP_FUNDO_CLASSE`) e organiza os dados em um banco de dados relacional (MySQL), criando uma base confiável para análises e consultas futuras.  
 
-🚀 Funcionalidades
+---
 
-🔎 Web Scraping: identifica os arquivos de extratos diretamente no site da CVM.
+## Funcionalidades Principais  
+- **Coleta Automática**: Identifica e baixa os arquivos de extrato diretamente do site da CVM.  
+- **Tratamento de Dados**: Realiza a leitura e padronização dos arquivos CSV utilizando **Pandas**, garantindo consistência mesmo em estruturas diferentes.  
+- **Integração com Banco de Dados**: Insere os registros processados em uma tabela MySQL.  
+- **Atualização Contínua**: Permite baixar e inserir novos extratos sempre que a CVM disponibilizar atualizações.  
+- **Limpeza Automática**: Remove o arquivo local após a inserção no banco, evitando acúmulo desnecessário.  
 
-⬇️ Download Automático: baixa o extrato desejado de acordo com o ano informado pelo usuário.
+---
 
-🛠 Tratamento de Dados: leitura com Pandas e padronização da estrutura, mesmo em casos de CSVs inconsistentes (ex.: ausência da coluna TP_FUNDO_CLASSE).
+## Tecnologias Utilizadas  
+- **Python 3**  
+- **Pandas** (tratamento de dados)  
+- **BeautifulSoup** (web scraping)  
+- **Requests** (requisições HTTP)  
+- **Regex** (extração de nomes de arquivos)  
+- **MySQL** (armazenamento dos dados)  
 
-🗄 Banco de Dados Relacional: insere os dados tratados em uma tabela MySQL.
+---
 
-♻️ Atualização Automática: sempre que a CVM lançar um novo extrato, ele pode ser baixado e integrado.
+## Como Usar  
 
-🧹 Limpeza: remove o arquivo local após a inserção no banco, evitando acúmulo desnecessário.
+### Configuração do Ambiente  
+1. Certifique-se de ter o **Python 3** instalado.  
+2. Clone este repositório:  
+   ```bash
+   git clone https://github.com/seu-usuario/CVM_EXTRATOR.git
 
-⚙️ Tecnologias Utilizadas
-
-Python 3
-
-Pandas
-
-BeautifulSoup (bs4)
-
-Requests
-
-Regex
-
-MySQL (via conector)
-
-OS / Sys
-
-🏗 Estrutura do Projeto
-CVM_EXTRATOR/
-│
-├── app.py                 # Script principal
-├── conection.py           # Função para conectar ao banco de dados
-├── README.md              # Documentação do projeto
-
-📥 Como Utilizar
-
-Clone o repositório:
-
-git clone https://github.com/seu-usuario/CVM_EXTRATOR.git
-
-
-Instale as dependências:
-
-pip install pandas requests beautifulsoup4 mysql-connector-python
-
-
-Configure o arquivo conection.py com suas credenciais do banco MySQL:
+## Configure o arquivo conection.py com suas credenciais do banco de dados MySQL:
 
 import mysql.connector
 
@@ -64,34 +45,13 @@ def conection_database():
         database="extratos_cvm"
     )
     cursor = mydb.cursor()
+    
     return cursor, mydb
 
 
-Execute o script:
+## Execute o script principal:
+    python app.py
+- **Informe o ano desejado para baixar o extrato.
+- **O sistema fará a leitura, tratamento, inserção no banco e exclusão do arquivo local.
 
-python app.py
-
-
-Informe o ano do extrato que deseja baixar e o processo será iniciado automaticamente.
-
-📊 Exemplo de Fluxo
-
-Usuário escolhe o ano →
-
-Script baixa o CSV da CVM →
-
-Dados são tratados e padronizados →
-
-Registros inseridos no banco de dados MySQL →
-
-Arquivo CSV é removido da máquina.
-
-📌 Observações
-
-Em alguns arquivos da CVM, a coluna TP_FUNDO_CLASSE não está presente.
-
-O projeto foi adaptado para padronizar automaticamente a estrutura e manter a consistência dos dados.
-
-🎯 Objetivo
-
-Esse projeto foi desenvolvido como prática para consolidar conhecimentos em Python, SQL, ETL e automação de processos, simulando desafios reais encontrados em projetos de Data Engineering e Business Intelligence.
+  
