@@ -1,81 +1,44 @@
-📊 CVM EXTRATOR
-Descrição do Projeto
+# 📊 CVM EXTRATOR
 
-O CVM EXTRATOR é uma aplicação em Python desenvolvida para automatizar a coleta, tratamento e armazenamento dos extratos de fundos de investimento disponibilizados pela CVM.
-O sistema realiza o download dos arquivos CSV diretamente do site da CVM, trata eventuais inconsistências (como ausência da coluna TP_FUNDO_CLASSE) e organiza os dados em um banco de dados relacional (MySQL), criando uma base confiável para análises e consultas futuras.
+## 📌 Descrição do Projeto
+O **CVM EXTRATOR** é uma aplicação desenvolvida em Python que automatiza o processo de coleta, leitura e organização de dados da CVM (Comissão de Valores Mobiliários).  
+O sistema baixa automaticamente os arquivos de extratos disponibilizados no site da CVM, processa os arquivos CSV, padroniza colunas (inclusive em casos de ausência como o `TP_FUNDO_CLASSE`) e organiza as informações em um banco de dados para uso posterior.  
 
-Funcionalidades Principais
+Esse fluxo cria uma base confiável e atualizada, permitindo futuras análises e aplicações em projetos de dados financeiros.
 
-Coleta Automática: Identifica e baixa os arquivos de extrato diretamente do site da CVM.
+---
 
-Tratamento de Dados: Realiza a leitura e padronização dos arquivos CSV utilizando Pandas, garantindo consistência mesmo em estruturas diferentes.
+## 🚀 Funcionalidades Principais
+- **Automação da coleta**: download direto dos extratos no site da CVM.  
+- **Leitura e padronização**: tratamento de inconsistências nos CSVs, garantindo uniformidade.  
+- **Armazenamento estruturado**: inserção dos dados em um banco de dados relacional.  
+- **Atualização automática**: sempre que novos extratos são lançados pela CVM, o sistema é capaz de incorporá-los.  
 
-Integração com Banco de Dados: Insere os registros processados em uma tabela MySQL.
+---
 
-Atualização Contínua: Permite baixar e inserir novos extratos sempre que a CVM disponibilizar atualizações.
+## 🛠️ Tecnologias Utilizadas
+- **Python 3.x**  
+- **Pandas** → leitura e manipulação de dados  
+- **BeautifulSoup4** → web scraping para identificar arquivos no site da CVM  
+- **Requests** → download dos arquivos CSV  
+- **MySQL Connector** → integração com banco de dados relacional  
 
-Limpeza Automática: Remove o arquivo local após a inserção no banco, evitando acúmulo desnecessário.
+---
 
-Tecnologias Utilizadas
+## ⚙️ Como Usar
 
-Python 3
+### 1. Configuração do Ambiente
+Certifique-se de ter o **Python 3.x** instalado.  
+Crie e ative um ambiente virtual:
 
-Pandas (tratamento de dados)
+CVM-EXTRATOR/
+│── app.py                # Código principal
+│── conection.py          # Conexão com o banco de dados
+│── requirements.txt      # Dependências do projeto
+└── README.md             # Documentação do projeto
 
-BeautifulSoup (web scraping)
+Contribuições são bem-vindas!
+Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias ou novas funcionalidades.
 
-Requests (requisições HTTP)
-
-Regex (extração de nomes de arquivos)
-
-MySQL (armazenamento dos dados)
-
-Como Usar
-Configuração do Ambiente
-
-Certifique-se de ter o Python 3 instalado.
-
-Clone este repositório:
-
-git clone https://github.com/seu-usuario/CVM_EXTRATOR.git
-
-
-Instale as dependências:
-
-pip install -r requirements.txt
-
-
-Configure o arquivo conection.py com suas credenciais do banco de dados MySQL:
-
-import mysql.connector
-
-def conection_database():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="seu_usuario",
-        password="sua_senha",
-        database="extratos_cvm"
-    )
-    cursor = mydb.cursor()
-    return cursor, mydb
-
-Execução do Projeto
-
-Execute o script principal:
-
-python app.py
-
-
-Informe o ano desejado para baixar o extrato.
-
-O sistema fará a leitura, tratamento, inserção no banco e exclusão do arquivo local.
-
-Observações
-
-Alguns arquivos CSV não possuem a coluna TP_FUNDO_CLASSE.
-
-O sistema foi adaptado para padronizar automaticamente os dados, assegurando consistência no banco.
-
-Autor
-
+👨‍💻 Autor
 Arthur Lopes
